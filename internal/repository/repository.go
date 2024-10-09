@@ -2,6 +2,8 @@ package repository
 
 type Repository struct {}
 
-func NewRepository() *Repository {
+func NewRepository(
+	
+) *Repository {
 	return &Repository{}
 }
