@@ -11,8 +11,8 @@ type Handler struct {
 	services *service.Service
 }
 
-func NewHandler() *Handler {
-	return &Handler{}
+func NewHandler(services *service.Service) *Handler {
+	return &Handler{services: services}
 }
 
 func (h *Handler) Init() *gin.Engine {

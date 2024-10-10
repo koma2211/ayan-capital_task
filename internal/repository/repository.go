@@ -1,9 +1,28 @@
-package repository 
+package repository
 
-type Repository struct {}
+import (
+	"context"
+
+	"github.com/jackc/pgx/v5"
+	"github.com/koma2211/ayan-capital_task/internal/entities"
+)
+
+const (
+	eventsTable = "events"
+)
+
+type Eventer interface {
+	AddEvents(ctx context.Context, event []entities.Event) error 
+}
+
+type Repository struct{
+	Eventer
+}
 
 func NewRepository(
-	
+	db *pgx.Conn,
 ) *Repository {
-	return &Repository{}
+	return &Repository{
+		Eventer: NewEventRepository(db),
+	}
 }
