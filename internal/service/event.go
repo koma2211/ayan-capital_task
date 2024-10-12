@@ -34,10 +34,6 @@ func (es *EventService) NotifyAllEvents(ctx context.Context) error {
 		event, err := es.eventRepo.GetEventByCursor(ctx, tx)
 		if err != nil {
 			if err := es.eventRepo.CloseEventCursor(ctx, tx); err != nil {
-				if err := tx.Rollback(ctx); err != nil {
-					return err
-				}
-
 				return err
 			}
 
