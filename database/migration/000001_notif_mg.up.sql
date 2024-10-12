@@ -6,3 +6,5 @@ CREATE TABLE IF NOT EXISTS "events" (
     "website_url" TEXT UNIQUE NOT NULL,
     "created_at" timestamp with time zone NOT NULL DEFAULT now()
 );
+
+CREATE INDEX IF NOT EXISTS "idx_event_date" ON events(event_date);

@@ -12,10 +12,13 @@ const (
 )
 
 type Eventer interface {
-	AddEvents(ctx context.Context, event []entities.Event) error 
+	AddEvents(ctx context.Context, event []entities.Event) error
+	DeclareEventCursor(ctx context.Context) (pgx.Tx, error)
+	CloseEventCursor(ctx context.Context, tx pgx.Tx) error
+	GetEventByCursor(ctx context.Context, tx pgx.Tx) (entities.Event, error)
 }
 
-type Repository struct{
+type Repository struct {
 	Eventer
 }
 

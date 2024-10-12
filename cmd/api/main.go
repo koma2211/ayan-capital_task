@@ -7,6 +7,7 @@ import (
 	"github.com/koma2211/ayan-capital_task/internal/handler"
 	"github.com/koma2211/ayan-capital_task/internal/repository"
 	cacherepository "github.com/koma2211/ayan-capital_task/internal/repository/cache_repository"
+	"github.com/koma2211/ayan-capital_task/internal/scheduler"
 	"github.com/koma2211/ayan-capital_task/internal/server"
 	"github.com/koma2211/ayan-capital_task/internal/service"
 	"github.com/koma2211/ayan-capital_task/pkg/cache/redis"
@@ -37,7 +38,9 @@ func main() {
 	serv := service.NewService(repos, cacheRepo)
 	handlers := handler.NewHandler(serv)
 
-	server := server.SetupServer(handlers, &cfg.HTTPServer, db)
+	schedulers := scheduler.NewJobSheduler(serv)
+
+	server := server.SetupServer(handlers, &cfg.HTTPServer, db, schedulers)
 
 	if err := server.Run(); err != nil {
 		log.Fatalf("error when to run server: %s", err.Error())

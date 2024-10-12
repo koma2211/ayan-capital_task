@@ -10,6 +10,7 @@ import (
 
 type Eventer interface {
 	AddEvents(ctx context.Context, events []entities.Event) error
+	NotifyAllEvents(ctx context.Context) error 
 }
 
 type Service struct {

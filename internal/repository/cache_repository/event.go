@@ -34,7 +34,7 @@ func (ecr *EventCacheRepository) AddEvents(ctx context.Context, events []entitie
 			return err
 		}
 
-		if err := pipe.Set(ctx, generateEventKey(events[i].SessionID), body, ecr.cacheTTL).Err(); err != nil {
+		if err := pipe.Set(ctx, generateEventKey(events[i].SessionID), string(body), ecr.cacheTTL).Err(); err != nil {
 			return err
 		}
 	}

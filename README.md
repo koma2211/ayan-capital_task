@@ -18,6 +18,7 @@ Write notification service to notify user for card activities on his card. You n
   "websiteUrl": "https://amazon.com"
 },
 
+- Данные повторяются.
 {
   "orderType": "CardVerify",
   "sessionId": "500cf308-e666-4639-aa9f-f6376015d1b4",
@@ -26,6 +27,7 @@ Write notification service to notify user for card activities on his card. You n
   "websiteUrl": "https://adidas.com"
 },
 
+- Данные повторяются.
 {
   "orderType": "SendOtp",
   "sessionId": "500cf308-e666-4639-aa9f-f6376015d1b4", 
