@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	DBSoruce      string        `yaml:"db_source"`
+	DBSource      string        `yaml:"db_source"`
 	MigrateSource string        `yaml:"migrate_source"`
 	RedisSource   string        `yaml:"redis_source"`
 	CacheTTL      time.Duration `yaml:"cache_ttl"`

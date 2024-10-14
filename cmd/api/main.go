@@ -17,12 +17,12 @@ import (
 
 func main() {
 	cfg := config.MustLoad()
-
-	if err := migrate.MigrateUp(cfg.MigrateSource, cfg.DBSoruce); err != nil {
+	
+	if err := migrate.MigrateUp(cfg.MigrateSource, cfg.DBSource); err != nil {
 		log.Fatalf("error when to init migration: %s", err.Error())
 	}
 
-	db, err := postgres.DBConn(cfg.DBSoruce)
+	db, err := postgres.DBConn(cfg.DBSource)
 	if err != nil {
 		log.Fatalf("error when to connect postgres-db: %s", err.Error())
 	}
